@@ -66,6 +66,8 @@ async function fetchNewsFromFeed(feed) {
       articles
     };
   } catch (err) {
+    // Log chyby do Vercel konzole
+    console.error(`[NEWS ERROR] ${feed.name}: ${err.message}`);
     return {
       source: feed.name,
       icon: feed.icon,
@@ -77,12 +79,14 @@ async function fetchNewsFromFeed(feed) {
 }
 
 async function updateNewsCache() {
+  console.log("[NEWS] Aktualizuji cache...");
   const newCache = {};
   for (const feed of RSS_FEEDS) {
     newCache[feed.name] = await fetchNewsFromFeed(feed);
   }
   newsCache = newCache;
   lastUpdate = new Date();
+  console.log(`[NEWS] Cache hotová (${lastUpdate.toISOString()})`);
 }
 
 export default async function handler(req, res) {
