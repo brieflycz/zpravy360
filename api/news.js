@@ -1,6 +1,11 @@
 import Parser from "rss-parser";
 
-const parser = new Parser();
+const parser = new Parser({
+  headers: { 
+    'User-Agent': 'Mozilla/5.0 (compatible; Zpravy360Bot/1.0; +https://zpravy360.vercel.app)',
+    'Accept': 'application/rss+xml,application/xml'
+  }
+});
 
 const RSS_FEEDS = [
   { name: "ČT24", url: "https://ct24.ceskatelevize.cz/rss/tema/vyber-redakce-84313", icon: "/static/icons/ct24.png" },
