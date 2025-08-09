@@ -1,0 +1,10 @@
+{
+  "name": "zpravy360",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "rss-parser": "^3.12.0"
+  }
+}
